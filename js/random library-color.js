@@ -17,6 +17,6 @@ function randomRGB() {
 }
 
 //return random array element
-function randomElenent(anArray) {
+function randomElement(anArray) {
     return anArray[randomInt(0, anArray.length)]
 }
