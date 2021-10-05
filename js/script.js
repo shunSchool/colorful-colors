@@ -13,5 +13,6 @@ console.log(colors.length);
 document.addEventListener("click", update);
 
 function update() {
-containerEl.innerHTML = `<div style="background: ${colors[randomInt(0, colors.length)]} " ></div>`;
+    let randCol = randomElement(colors);
+containerEl.innerHTML = `<div style="background: ${randCol} " ></div>`;
 }
