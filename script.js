@@ -4,7 +4,7 @@
 let containerEl = document.getElementById("container");
 
 //array
-let colors = ["red", "green", "blue"];
-// index ---> 0       1        2
+let colors = ["red", "green", "blue", "orange", "cyan"];
+// index ---> 0       1        2       3         4
 
-containerEl.innerHTML = "<div>" + colors[0] + "</div>";
+containerEl.innerHTML = `<div style="background: ${colors[4]} " ></div>`;
