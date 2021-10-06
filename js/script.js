@@ -2,17 +2,28 @@
 
 //variables for HTML elements
 let containerEl = document.getElementById("container");
+let inputEl = document.getElementById("color-in");
 
-//array
-let colors = ["red", "green", "blue", "orange", "cyan", "purple"];
-// index ---> 0       1        2       3         4        5
+//global variable
+let colors = [];
 
-console.log(colors.length);
+//Event listener
+inputEl.addEventListener("keydown", submitHandler);
 
-//click event
-document.addEventListener("click", update);
+function submitHandler(event) {
+    if(event.keyCode === 13) {
+        //add user's color to the colors array and display
+        colors.push(inputEl.value);
+        inputEl.value = "";
+        displayColors(colors);
+    }
+}
 
-function update() {
-    let randCol = randomElement(colors);
-containerEl.innerHTML = `<div style="background: ${randCol} " ></div>`;
+function displayColors(colors) {
+    //display all colors on the page
+    let divStr = "";
+    for (let i = 0; i < colors.length; i++) {
+        divStr += `<div style="background: ${colors[i]} " ></div>`;
+    }
+    containerEl.innerHTML = divStr;
 }
