@@ -5,7 +5,19 @@ let containerEl = document.getElementById("container");
 let inputEl = document.getElementById("color-in");
 
 //global variable
-let colors = [];
+let colors;
+
+// fetch content from colors.txt
+fetch("colors.txt").then(convertData).then(processData);
+
+function convertData(rawData) {
+    return rawData.text();
+}
+
+function processData(stringData) {
+    colors = stringData.split(/\r?\n/);
+    displayColors(colors);
+}
 
 //Event listener
 inputEl.addEventListener("keydown", submitHandler);
@@ -23,7 +35,7 @@ function displayColors(colors) {
     //display all colors on the page
     let divStr = "";
     for (let i = 0; i < colors.length; i++) {
-        divStr += `<div style="background: ${colors[i]} " ></div>`;
+        divStr += `<div style="background: ${colors[i]} " >${colors[i]}</div>`;
     }
     containerEl.innerHTML = divStr;
 }
