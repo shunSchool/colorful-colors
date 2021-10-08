@@ -20,15 +20,16 @@ function processData(stringData) {
 }
 
 //Event listener
-inputEl.addEventListener("keydown", submitHandler);
+inputEl.addEventListener("keyup", submitHandler);
 
 function submitHandler(event) {
-    if(event.keyCode === 13) {
-        //add user's color to the colors array and display
-        colors.push(inputEl.value);
-        inputEl.value = "";
-        displayColors(colors);
+    let divStr = "";
+    for (let i = 0; i < colors.length; i++) {
+        if (colors[i].includes(inputEl.value)) {
+            divStr += `<div style="background: ${colors[i]} ">${colors[i]}</div>`;
+        }
     }
+    containerEl.innerHTML = divStr; 
 }
 
 function displayColors(colors) {
